@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Item;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class ItemController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $items = Item::all();
+        $posts = Post::all();
 
-        return view('items.index', ['items' => $items]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**

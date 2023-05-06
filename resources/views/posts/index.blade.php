@@ -6,8 +6,8 @@
     <p>This is a list of posts made on the site</p>
 
     <ul>
-        @foreach ($items as $item)
-            <li> {{ $item->title }} </li>
+        @foreach ($posts as $post)
+            <li> {{ $post->title }} </li>
         @endforeach
     </ul>
 @endsection
