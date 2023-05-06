@@ -1,10 +1,10 @@
 <html>
     <head>
-        <title>My Site - @yield('title')</title>
+        <title>forgeddit - @yield('title')</title>
     </head>
 
     <body>
-        <h1>My Site - @yield('title')</h1>
+        <h1>forgeddit - @yield('title')</h1>
         
         <div>
             @yield('content')

@@ -3,8 +3,11 @@
 @section('title', 'Post Details')
 
 @section('content')
-    <ul>
-            <li> {{ $post->title }} </li>
-            <li> {{ $post->content }} </li>
-    </ul>
+    <div>
+        <h2> {{ $post->title }} </h2>
+    </div>
+
+    <div>
+        <p> {{ $post->content }} </p>
+    </div>
 @endsection
