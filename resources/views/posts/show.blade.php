@@ -10,4 +10,6 @@
     <div>
         <p> {{ $post->content }} </p>
     </div>
+
+    @include('posts.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
 @endsection
