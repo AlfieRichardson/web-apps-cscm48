@@ -17,6 +17,7 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => fake()->numberBetween($min = 1, $max=7),
             'title' => fake()->word(),
             'content' => fake()->realText($maxNbChars = 200, $indexSize = 2),
         ];

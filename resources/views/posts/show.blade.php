@@ -1,10 +1,12 @@
 @extends('layouts.old-app')
 
-@section('title', 'Post Details')
+@section('title', '{{ $post->title }}')
 
 @section('content')
     <div>
-        <h2> {{ $post->title }} </h2>
+        <h2>
+            By: {{ $post->user->name }}
+        </h2>
     </div>
 
     <div>

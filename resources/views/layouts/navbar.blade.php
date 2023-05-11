@@ -19,11 +19,11 @@
     @if(Auth::check())
         <ul>
             <li>
-                <a href="/userpage">Your Page</a>
+                <a href="/userpage">{{ Auth::user()->name }}'s Page</a>
             </li>
     
             <li>
-                <a href="//usersettings">Settings</a>
+                <a href="/usersettings">Settings</a>
             </li>
 
             <li>

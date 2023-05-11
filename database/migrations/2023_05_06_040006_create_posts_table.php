@@ -17,8 +17,13 @@ return new class extends Migration
             $table->timestamps();
 
             // Custom properties
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('content');
+
+            // Foreign keys
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
