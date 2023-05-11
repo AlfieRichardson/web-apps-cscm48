@@ -27,6 +27,10 @@
             </li>
 
             <li>
+                <a href="/usernotifs">Notifications</a>
+            </li>
+
+            <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
