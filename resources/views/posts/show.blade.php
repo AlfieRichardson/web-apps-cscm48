@@ -5,7 +5,7 @@
 @section('content')
     <div>
         <h2>
-            By: {{ $post->user->name }}
+            By: <a href="{{ route('users.show', ['id' => $post->user_id]) }}"> {{ $post->user->name }} </a>
         </h2>
     </div>
 

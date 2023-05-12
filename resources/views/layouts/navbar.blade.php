@@ -1,60 +1,57 @@
-<nav>
+<nav class="navigation">
+    <section class="container">
 
-    <!-- Logo -->
-    <h1>Forgeddit</h1>
+        <!-- Logo -->
+        <h1 class="navigation-title">Forgeddit</h1>
 
-    <!-- Guest Links -->
-    <ul>
-        <li>
-            <a href="/posts">Posts</a>
-        </li>
+        <ul class="navigation-list float-right">
+            <!-- Default Links -->
+            <li class="navigation-item">
+                <a href="/posts">Posts</a>
+            </li>
 
-        <li>
-            <a href="/users">Users</a>
-        </li>
-    </ul>
+            <li class="navigation-item">
+                <a href="/users">Users</a>
+            </li>
 
-
-    <!-- User Links -->
-    @if(Auth::check())
-        <ul>
-            <li>
+            @if(Auth::check())
+            <!-- User Links -->
+            <li class="navigation-item">
                 <a href="/userpage">{{ Auth::user()->name }}'s Page</a>
             </li>
-    
-            <li>
+        
+            <li class="navigation-item">
                 <a href="/usersettings">Settings</a>
             </li>
 
-            <li>
+            <li class="navigation-item">
                 <a href="/usernotifs">Notifications</a>
             </li>
 
-            <li>
+            <li class="navigation-item">
                 <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+                @csrf
 
-                    <a href="{{ route('logout') }}"
+                <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                        
+                               this.closest('form').submit();">
+                                
                         Log Out
                     </a>
                 </form>
             </li>
-        </ul>
-    
-    <!-- Guest Links -->
-    @else
-        <ul>
-            <li>
-                <a href="{{ route('login') }}">Log In</a>
+
+            @else
+            <!-- Guest Links -->
+            <li class="navigation-item">
+                <a class="navigation-link" href="{{ route('login') }}">Log In</a>
             </li>
 
-            <li>
-                <a href="{{ route('register')}}">Register</a>
+            <li class="navigation-item">
+                <a class="navigation-link" href="{{ route('register')}}">Register</a>
             </li>
+            @endif
         </ul>
-    @endif
 
+    </section>
 </nav>
