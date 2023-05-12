@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/posts');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -36,12 +36,20 @@ require __DIR__.'/auth.php';
 
 // Custom routes
 
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index'])
+    ->name('posts.index');
 
 Route::get('/posts/{id}', [PostController::class, 'show'])
     ->name('posts.show');
 
-Route::get('/users', [UserController::class, 'index']);
+Route::get('/users', [UserController::class, 'index'])
+    ->name('users.index');
 
 Route::get('/users/{id}', [UserController::class, 'show'])
     ->name('users.show');
+
+Route::get('/comments/create', [CommentController::class, 'create'])
+    ->name('comments.create');
+
+Route::post('/comments', [CommentController::class, 'store'])
+    ->name('comments.store');

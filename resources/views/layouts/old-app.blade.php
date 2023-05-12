@@ -21,12 +21,22 @@
     <body>
         <main class="wrapper">
             @include('layouts.navbar')
-
-            <h1>@yield('title')</h1>
+            <header class="header">
+                <section class="container">
+                    <h1>@yield('title')</h1>
+                    @yield('description')
+                </section>
+            </header>
             
-            <div>
-                @yield('content')
-            </div>
+            @yield('content')
+
+            <footer class="footer">
+                <section class="container">
+                    <p class="description">
+                        Created by Alfie Richardson (Student Number: 851009)
+                    </p>
+                </section>
+            </footer>
         </main>
     </body>
 </html>
