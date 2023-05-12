@@ -10,15 +10,12 @@
     </h4>
     
     @if(Auth::check())
-    <a class="button" href="like">Write Comment</a>
+    <a class="button" href="{{ route('comments.create') }}">Write Comment</a>
     @endif
 
 @endsection
 
 @section('content')
-    @if(Auth::check())
-    <a class="button" href="like">Create Comment</a>
-    @endif
 
     @foreach ($post_comments as $comment)
     <section class="container">

@@ -28,6 +28,27 @@
                 </section>
             </header>
             
+            @if (session('message'))
+
+            <section class="container">
+                <p><b>{{ session('message') }}</b></p>
+            </section>
+
+            @endif
+
+            @if ($errors->any())
+
+            <section class="container">
+                <p>Errors!</p>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </section>
+
+            @endif
+            
             @yield('content')
 
             <footer class="footer">

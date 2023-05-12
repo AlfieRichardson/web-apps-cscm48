@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -11,9 +13,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all();
-
-        return view('comments.index', ['comments' => $comments]);
+        //
     }
 
     /**
@@ -21,7 +21,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('comments.create');
     }
 
     /**
@@ -29,7 +29,21 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'post_id' => 'required|numeric',
+            'user_id' => 'required|numeric',
+            'content' => 'required|max:255'
+        ]);
+
+        $new = new Comment;
+        $new->post_id = $validatedData['post_id'];
+        $new->user_id = $validatedData['user_id'];
+        $new->content = $validatedData['content'];
+        $new->save();
+
+        session()->flash('message', 'Comment submitted.');
+
+        return redirect()->route('posts.index');
     }
 
     /**
