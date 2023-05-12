@@ -9,9 +9,9 @@
             <a href="/posts">Posts</a>
         </li>
 
-        <!--<li>
+        <li>
             <a href="/users">Users</a>
-        </li>-->
+        </li>
     </ul>
 
 
