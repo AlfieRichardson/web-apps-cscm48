@@ -52,4 +52,10 @@
     </section>
     @endforeach
 
+    <section class="container">
+        <div class"float-right">
+            {{ $posts->links() }}
+        </div>
+    </section>
+
 @endsection
