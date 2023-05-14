@@ -10,7 +10,7 @@
     </h4>
     
     @if(Auth::check())
-    <a class="button" href="{{ route('comments.create') }}">Write Comment</a>
+    <a class="button" href="{{ route('comments.create', ['id' => $post->id]) }}">Write Comment</a>
     @endif
 
 @endsection

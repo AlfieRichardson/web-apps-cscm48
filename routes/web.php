@@ -49,7 +49,8 @@ Route::get('/users', [UserController::class, 'index'])
 Route::get('/users/{id}', [UserController::class, 'show'])
     ->name('users.show');
 
-Route::get('/comments/create', [CommentController::class, 'create'])
+Route::get('/comments/create/{id}', [CommentController::class, 'create'])
+    ->middleware(['auth', 'verified'])
     ->name('comments.create');
 
 Route::post('/posts', [CommentController::class, 'store'])
