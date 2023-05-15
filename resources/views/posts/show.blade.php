@@ -21,20 +21,26 @@
     <section class="container">
         <h4> <a href="{{ route('users.show', ['id' => $comment->user_id]) }}"> {{ $comment->user->name }}</a> commented: </h4>
         <p> {{ $comment->content }} </p>
+        @if($comment->user_id == Auth::id() || (Auth::check() && Auth::user()->admin == True))
         <div class="container">
             <div class="row">
                 <div class="column">
-                    <p>
-                        <a class="button" href="like">Like</a>
-                    </p>
+                    <form method="POST" action="{{ route('comments.edit', ['id' => $comment->id]) }}">
+                        @csrf
+                        @method('PUT')
+                        <button class="button button-outline" type="submit">Edit Comment</a>
+                    </form>
                 </div>
                 <div class="column">
-                    <p>
-                        <a class="button" href="dislike">Dislike</a>
-                    </p>
+                    <form method="POST" action="{{ route('comments.destroy', ['id' => $comment->id]) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="button button-outline" type="submit">Delete Comment</a>
+                    </form>
                 </div>
             </div>
         </div>
+        @endif
     </section>
     @endforeach
 

@@ -68,5 +68,14 @@ Route::get('/comments/create/{id}', [CommentController::class, 'create'])
     ->middleware(['auth', 'verified'])
     ->name('comments.create');
 
+Route::put('/comments/edit/{id}', [CommentController::class, 'edit'])
+    ->name('comments.edit');
+
+Route::put('/comments/{id}', [CommentController::class, 'update'])
+    ->name('comments.update');
+
+Route::delete('/comments/{id}', [CommentController::class, 'destroy'])
+    ->name('comments.destroy');
+
 Route::post('/', [CommentController::class, 'store'])
     ->name('comments.store');
