@@ -64,7 +64,8 @@ class CommentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -72,16 +73,15 @@ class CommentController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $comment = Comment::findOrFail($id);
+        
         $validatedData = $request->validate([
             'post_id' => 'required|numeric',
             'content' => 'required|max:255'
         ]);
 
-        $new = new Comment;
-        $new->post_id = $validatedData['post_id'];
-        $new->user_id = auth()->id();
-        $new->content = $validatedData['content'];
-        $new->save();
+        $comment->content = $validatedData['content'];
+        $comment->save();
 
         session()->flash('message', 'Comment submitted.');
 
