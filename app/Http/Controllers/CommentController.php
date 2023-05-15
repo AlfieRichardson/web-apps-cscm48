@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\User;
+use App\Notifications\Commented;
 
 use Illuminate\Http\Request;
 
@@ -40,7 +42,10 @@ class CommentController extends Controller
         $new->user_id = auth()->id();
         $new->content = $validatedData['content'];
         $new->save();
-
+        
+        $post = Post::find($new->post_id);
+        $post->user->notify(new Commented($post));
+        
         session()->flash('message', 'Comment submitted.');
 
         return redirect()->route('posts.show', ['id' => $validatedData['post_id']]);
@@ -67,7 +72,20 @@ class CommentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'post_id' => 'required|numeric',
+            'content' => 'required|max:255'
+        ]);
+
+        $new = new Comment;
+        $new->post_id = $validatedData['post_id'];
+        $new->user_id = auth()->id();
+        $new->content = $validatedData['content'];
+        $new->save();
+
+        session()->flash('message', 'Comment submitted.');
+
+        return redirect()->route('posts.show', ['id' => $validatedData['post_id']]);
     }
 
     /**

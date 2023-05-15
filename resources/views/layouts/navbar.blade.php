@@ -11,24 +11,7 @@
                 <a class="navigation-link" href="/posts">Posts</a>
             </li>
 
-            <li class="navigation-item">
-                <a class="navigation-link" href="/users">Users</a>
-            </li>
-
             @if(Auth::check())
-            <!-- User Links -->
-            <li class="navigation-item">
-                <a class="navigation-link" href="/userpage">{{ Auth::user()->name }}'s Page</a>
-            </li>
-        
-            <li class="navigation-item">
-                <a class="navigation-link" href="/usersettings">Settings</a>
-            </li>
-
-            <li class="navigation-item">
-                <a class="navigation-link" href="/usernotifs">Notifications</a>
-            </li>
-
             <li class="navigation-item">
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
