@@ -53,9 +53,17 @@
 
             <footer class="footer">
                 <section class="container">
-                    <p class="description">
-                        Created by Alfie Richardson (Student Number: 851009)
-                    </p>
+                    <div class="float-left">
+                        <p>
+                        Website created by Alfie Richardson (Student Number: 851009)
+                        </p>
+                    </div>
+                    <div class="float-right">
+                        <p>
+                        Framework used: 
+                        <a href="https://milligram.io/">https://milligram.io/</a>
+                        </p>
+                    </div>
                 </section>
             </footer>
         </main>

@@ -40,8 +40,23 @@ require __DIR__.'/auth.php';
 Route::get('/posts', [PostController::class, 'index'])
     ->name('posts.index');
 
-Route::get('/posts/{id}', [PostController::class, 'show'])
+Route::get('/posts/create', [PostController::class, 'create'])
+    ->name('posts.create');
+
+Route::post('/posts', [PostController::class, 'store'])
+    ->name('posts.store');
+
+Route::get('/posts/show/{id}', [PostController::class, 'show'])
     ->name('posts.show');
+
+Route::put('/posts/edit/{id}', [PostController::class, 'edit'])
+    ->name('posts.edit');
+
+Route::put('/posts/{id}', [PostController::class, 'update'])
+    ->name('posts.update');
+
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])
+    ->name('posts.destroy');
 
 Route::get('/users', [UserController::class, 'index'])
     ->name('users.index');
@@ -53,5 +68,5 @@ Route::get('/comments/create/{id}', [CommentController::class, 'create'])
     ->middleware(['auth', 'verified'])
     ->name('comments.create');
 
-Route::post('/posts', [CommentController::class, 'store'])
+Route::post('/', [CommentController::class, 'store'])
     ->name('comments.store');
